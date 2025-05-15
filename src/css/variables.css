@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Colores principales */
+    --color-primario: #0d6efd;
+    --color-acento: #20c997;
+
+    /* Colores de fondo */
+    --fondo-claro: #f8f9fa;
+    --fondo-oscuro: #212529;
+
+    /* Texto */
+    --texto-principal: #212529;
+    --texto-secundario: #6c757d;
+    --texto-invertido: #ffffff;
+
+    /* Estados */
+    --exito: #28a745;
+    --peligro: #dc3545;
+    --advertencia: #ffc107;
+    --info: #17a2b8;
+
+    /* Sombra y bordes */
+    --sombra-suave: rgba(0, 0, 0, 0.1);
+    --borde-suave: #dee2e6;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+html{
+    scroll-behavior: smooth;
+
+}
+
+html.overflow {
+    overflow: hidden;
+}
+
+body.overflow {
+    overflow: hidden;
+}
+
+section, .section{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+.titulos{
+    text-align: center;
+    margin: 45px 0;
+    font-size: 36px;
+    color: var(--fondo-oscuro);
+}
+
+
+/* comprobar si hay wifi */
+.conetendor-siin-wifi {
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.conetendor-siin-wifi.activo {
+    display: flex;
+    z-index: 100;
+
+}
+
+
+.conetendor-siin-wifi svg {
+    width: 200px;
+    animation: correr 1s ease-out infinite alternate;
+    animation: floating 1s ease-out infinite alternate;
+
+}
+
+
+.conetendor-siin-wifi a {
+    color: var(--fondo-claro);
+    background-color: var(--color-primario);
+    padding: 10px 70px;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: all .3s ease;
+
+    &:hover {
+        box-shadow: 0 0 10px var(--color-primario);
+    }
+}
+
+.sinconexion {
+    position: relative;
+    display: block;
+}
+
+.sinconexion::before {
+    margin-top: 5px;
+    content: 'Sin  conexión';
+    color: var(--texto-principal);
+    font-size: 48px;
+    letter-spacing: 1px;
+    display: inline-block;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-25px);
+    }
+}
+
+.centrado-cargando {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    background-color: var(--fondo-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centrado-cargando.overflow {
+    display: none;
+}
+
+.loader {
+    width: 108px;
+    height: 16px;
+    background: radial-gradient(circle 8px at 8px center,
+            var(--texto-principal) 100%,
+            transparent 0),
+        radial-gradient(circle 8px at 8px center,
+            var(--texto-principal) 100%,
+            transparent 0);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    position: relative;
+    animation: ballX 1s linear infinite;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--texto-principal);
+    inset: 0;
+    margin: auto;
+    animation: moveX 1s cubic-bezier(0.5, 300, 0.5, -300) infinite;
+}
+
+@keyframes ballX {
+
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+        background-position: 25% 0, 75% 0;
+    }
+
+    40% {
+        background-position: 25% 0, 85% 0;
+    }
+
+    90% {
+        background-position: 15% 0, 75% 0;
+    }
+}
+
+@keyframes moveX {
+    100% {
+        transform: translate(0.15px);
+    }
+}
